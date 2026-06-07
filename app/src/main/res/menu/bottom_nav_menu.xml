@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/homeFragment" android:title="@string/nav_home" android:icon="@drawable/ic_home" />
+    <item android:id="@+id/optimizerFragment" android:title="@string/nav_optimizer" android:icon="@drawable/ic_optimizer" />
+    <item android:id="@+id/cleanerFragment" android:title="@string/nav_cleaner" android:icon="@drawable/ic_cleaner" />
+</menu>

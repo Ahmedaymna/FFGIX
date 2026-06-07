@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="bg_dark">#070714</color>
+    <color name="bg_card">#0F0F2A</color>
+    <color name="cyan">#00FFFF</color>
+    <color name="orange">#FF6600</color>
+    <color name="purple">#9966FF</color>
+    <color name="colorPrimary">#00FFFF</color>
+    <color name="colorPrimaryDark">#070714</color>
+    <color name="colorAccent">#FF6600</color>
+    <color name="nav_selected">#00FFFF</color>
+    <color name="nav_unselected">#4455AA</color>
+</resources>

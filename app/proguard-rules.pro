@@ -1,0 +1,3 @@
+-keep class com.google.android.gms.** { *; }
+-keep class com.gixtool.app.** { *; }
+-keepattributes *Annotation*

@@ -1,0 +1,6 @@
+# Auto detect text files and perform LF normalization
+* text=auto
+
+# Force LF for shell scripts (critical for Linux CI)
+gradlew text eol=lf
+*.sh text eol=lf

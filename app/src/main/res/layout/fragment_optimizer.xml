@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_dark">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="🎮 محسّن Free Fire"
+            android:textColor="#00FFFF"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="20dp" />
+
+        <!-- Analyze Button -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnAnalyze"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:text="🔍 تحليل الجهاز واقتراح الإعدادات"
+            android:textSize="16sp"
+            android:textColor="#000000"
+            app:backgroundTint="#00FFFF"
+            app:cornerRadius="12dp"
+            android:layout_marginBottom="12dp" />
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="gone"
+            android:layout_marginBottom="12dp" />
+
+        <!-- Results Card -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/resultsCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:visibility="gone"
+            app:cardBackgroundColor="@color/bg_card"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="8dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="⚡ الإعدادات المقترحة"
+                    android:textColor="#FF6600"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="12dp" />
+
+                <TextView android:id="@+id/tvGraphics" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="#CCCCEE" android:textSize="15sp" android:layout_marginBottom="6dp" />
+                <TextView android:id="@+id/tvFpsRec" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="#CCCCEE" android:textSize="15sp" android:layout_marginBottom="6dp" />
+                <TextView android:id="@+id/tvShadows" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="#CCCCEE" android:textSize="15sp" android:layout_marginBottom="6dp" />
+                <TextView android:id="@+id/tvHdr" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="#CCCCEE" android:textSize="15sp" android:layout_marginBottom="6dp" />
+                <TextView android:id="@+id/tvAa" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="#CCCCEE" android:textSize="15sp" android:layout_marginBottom="12dp" />
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardBackgroundColor="#1A00FFFF"
+                    app:cardCornerRadius="8dp">
+                    <TextView android:id="@+id/tvReason" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="#00FFFF" android:textSize="14sp" android:padding="12dp" />
+                </androidx.cardview.widget.CardView>
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Launch Buttons -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            app:cardBackgroundColor="@color/bg_card"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="8dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="🚀 تشغيل الألعاب"
+                    android:textColor="#00FFFF"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="12dp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnOpenFF"
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    android:text="🔥 فتح Free Fire مباشرة"
+                    android:textColor="#FFFFFF"
+                    app:backgroundTint="#FF4400"
+                    app:cornerRadius="10dp"
+                    android:layout_marginBottom="10dp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnOpenGame"
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    android:text="🎮 فتح لعبة أخرى"
+                    android:textColor="#FFFFFF"
+                    app:backgroundTint="#334466"
+                    app:cornerRadius="10dp" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
+</ScrollView>

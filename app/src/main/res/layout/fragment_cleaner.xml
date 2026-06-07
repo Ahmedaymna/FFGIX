@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_dark">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="🧹 منظّف الجهاز"
+            android:textColor="#00FFFF"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="20dp" />
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="gone"
+            android:layout_marginBottom="12dp" />
+
+        <!-- Result Card -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/resultCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:visibility="gone"
+            app:cardBackgroundColor="#1A00FF88"
+            app:cardCornerRadius="12dp">
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="16dp">
+                <TextView android:id="@+id/tvResult" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="#00FF88" android:textSize="15sp" android:layout_marginBottom="4dp" />
+                <TextView android:id="@+id/tvFreed" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="#00FFFF" android:textSize="22sp" android:textStyle="bold" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- RAM Clean -->
+        <androidx.cardview.widget.CardView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="12dp" app:cardBackgroundColor="@color/bg_card" app:cardCornerRadius="16dp" app:cardElevation="6dp">
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="16dp">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🧠 تنظيف RAM" android:textColor="#9966FF" android:textSize="18sp" android:textStyle="bold" android:layout_marginBottom="8dp" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="إيقاف العمليات الخلفية وتحرير الذاكرة العشوائية" android:textColor="#8888AA" android:textSize="13sp" android:layout_marginBottom="12dp" />
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+                    <com.google.android.material.button.MaterialButton android:id="@+id/btnCleanRam" android:layout_width="0dp" android:layout_weight="1" android:layout_height="48dp" android:text="تنظيف RAM" android:textColor="#FFFFFF" app:backgroundTint="#6633FF" app:cornerRadius="10dp" android:layout_marginEnd="8dp" />
+                    <com.google.android.material.button.MaterialButton android:id="@+id/btnInfoRam" android:layout_width="48dp" android:layout_height="48dp" android:text="?" android:textColor="#9966FF" app:backgroundTint="#22113366" app:cornerRadius="10dp" app:strokeColor="#9966FF" app:strokeWidth="1dp" style="@style/Widget.Material3.Button.OutlinedButton" />
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Cache Clean -->
+        <androidx.cardview.widget.CardView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="12dp" app:cardBackgroundColor="@color/bg_card" app:cardCornerRadius="16dp" app:cardElevation="6dp">
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="16dp">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="💾 تنظيف الكاش" android:textColor="#00FFCC" android:textSize="18sp" android:textStyle="bold" android:layout_marginBottom="8dp" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="حذف ملفات الذاكرة المؤقتة للتطبيقات" android:textColor="#8888AA" android:textSize="13sp" android:layout_marginBottom="12dp" />
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+                    <com.google.android.material.button.MaterialButton android:id="@+id/btnCleanCache" android:layout_width="0dp" android:layout_weight="1" android:layout_height="48dp" android:text="تنظيف الكاش" android:textColor="#000000" app:backgroundTint="#00FFCC" app:cornerRadius="10dp" android:layout_marginEnd="8dp" />
+                    <com.google.android.material.button.MaterialButton android:id="@+id/btnInfoCache" android:layout_width="48dp" android:layout_height="48dp" android:text="?" android:textColor="#00FFCC" app:backgroundTint="#1100FFCC" app:cornerRadius="10dp" app:strokeColor="#00FFCC" app:strokeWidth="1dp" style="@style/Widget.Material3.Button.OutlinedButton" />
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Storage Clean -->
+        <androidx.cardview.widget.CardView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="12dp" app:cardBackgroundColor="@color/bg_card" app:cardCornerRadius="16dp" app:cardElevation="6dp">
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="16dp">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="📂 تنظيف التخزين" android:textColor="#FF6600" android:textSize="18sp" android:textStyle="bold" android:layout_marginBottom="8dp" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="حذف الملفات المؤقتة والصور المصغرة غير المستخدمة" android:textColor="#8888AA" android:textSize="13sp" android:layout_marginBottom="12dp" />
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+                    <com.google.android.material.button.MaterialButton android:id="@+id/btnCleanStorage" android:layout_width="0dp" android:layout_weight="1" android:layout_height="48dp" android:text="تنظيف التخزين" android:textColor="#FFFFFF" app:backgroundTint="#FF6600" app:cornerRadius="10dp" android:layout_marginEnd="8dp" />
+                    <com.google.android.material.button.MaterialButton android:id="@+id/btnInfoStorage" android:layout_width="48dp" android:layout_height="48dp" android:text="?" android:textColor="#FF6600" app:backgroundTint="#22FF6600" app:cornerRadius="10dp" app:strokeColor="#FF6600" app:strokeWidth="1dp" style="@style/Widget.Material3.Button.OutlinedButton" />
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Reward Boost -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnRewardBoost"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:text="🎁 شاهد إعلان للحصول على تسريع VIP"
+            android:textColor="#FFFFFF"
+            app:backgroundTint="#AA5500"
+            app:cornerRadius="12dp"
+            android:layout_marginTop="8dp" />
+
+    </LinearLayout>
+</ScrollView>
