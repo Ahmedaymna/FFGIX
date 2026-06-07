@@ -28,10 +28,12 @@ jobs:
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
           restore-keys: ${{ runner.os }}-gradle-
 
-      - name: Download Gradle Wrapper JAR
-        run: curl -sL "https://services.gradle.org/distributions/gradle-8.0-wrapper.jar" -o gradle/wrapper/gradle-wrapper.jar || curl -sL "https://raw.githubusercontent.com/gradle/gradle/v8.0.0/gradle/wrapper/gradle-wrapper.jar" -o gradle/wrapper/gradle-wrapper.jar
+      - name: Setup Gradle Wrapper
+        uses: gradle/actions/setup-gradle@v3
+        with:
+          gradle-version: wrapper
 
-      - name: Fix gradlew line endings and permissions
+      - name: Fix gradlew permissions
         run: |
           sed -i 's/\r$//' gradlew
           chmod +x gradlew
