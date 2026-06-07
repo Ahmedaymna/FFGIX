@@ -17,13 +17,35 @@ android {
         vectorDrawables { useSupportLibrary true }
     }
 
+    signingConfigs {
+        release {
+            if (System.getenv("KEYSTORE_BASE64")) {
+                storeFile file("${buildDir}/keystore.jks")
+                storePassword System.getenv("KEY_STORE_PASSWORD") ?: ""
+                keyAlias System.getenv("KEY_ALIAS") ?: ""
+                keyPassword System.getenv("KEY_PASSWORD") ?: ""
+            }
+        }
+    }
+
     buildTypes {
-        debug { debuggable true; minifyEnabled false }
+        debug {
+            debuggable true
+            minifyEnabled false
+        }
         release {
             minifyEnabled true
             shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            if (System.getenv("KEYSTORE_BASE64")) {
+                signingConfig signingConfigs.release
+            }
         }
+    }
+
+    lintOptions {
+        abortOnError false
+        checkReleaseBuilds false
     }
 
     compileOptions {
@@ -31,8 +53,10 @@ android {
         targetCompatibility JavaVersion.VERSION_17
     }
     kotlinOptions { jvmTarget = '17' }
-    buildFeatures { viewBinding true }
-    lintOptions { abortOnError false; checkReleaseBuilds false }
+    buildFeatures {
+        viewBinding true
+        buildConfig true
+    }
 }
 
 dependencies {

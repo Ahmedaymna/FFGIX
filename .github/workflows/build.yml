@@ -19,12 +19,6 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
-      - name: Install Gradle 8.0 directly
-        run: |
-          wget -q https://services.gradle.org/distributions/gradle-8.0-bin.zip -O /tmp/gradle.zip
-          unzip -q /tmp/gradle.zip -d /opt/gradle
-          echo "/opt/gradle/gradle-8.0/bin" >> $GITHUB_PATH
-
       - name: Cache Gradle
         uses: actions/cache@v4
         with:
@@ -32,11 +26,42 @@ jobs:
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*') }}
           restore-keys: ${{ runner.os }}-gradle-
 
+      - name: Install Gradle 8.0
+        run: |
+          wget -q https://services.gradle.org/distributions/gradle-8.0-bin.zip -O /tmp/gradle.zip
+          unzip -q /tmp/gradle.zip -d /opt/gradle
+          echo "/opt/gradle/gradle-8.0/bin" >> $GITHUB_PATH
+
+      - name: Generate Keystore
+        run: |
+          keytool -genkey -v \
+            -keystore app/build/keystore.jks \
+            -keyalg RSA -keysize 2048 -validity 10000 \
+            -alias gixtool \
+            -storepass gixtool123 \
+            -keypass gixtool123 \
+            -dname "CN=GIXTool, OU=Dev, O=GIX, L=City, S=State, C=US"
+          mkdir -p app/build
+          echo "KEYSTORE_BASE64=true" >> $GITHUB_ENV
+          echo "KEY_STORE_PASSWORD=gixtool123" >> $GITHUB_ENV
+          echo "KEY_ALIAS=gixtool" >> $GITHUB_ENV
+          echo "KEY_PASSWORD=gixtool123" >> $GITHUB_ENV
+
       - name: Build Debug APK
         run: gradle assembleDebug --stacktrace
+        env:
+          KEYSTORE_BASE64: ${{ env.KEYSTORE_BASE64 }}
+          KEY_STORE_PASSWORD: ${{ env.KEY_STORE_PASSWORD }}
+          KEY_ALIAS: ${{ env.KEY_ALIAS }}
+          KEY_PASSWORD: ${{ env.KEY_PASSWORD }}
 
-      - name: Build Release APK
+      - name: Build Release APK (Signed)
         run: gradle assembleRelease --stacktrace
+        env:
+          KEYSTORE_BASE64: ${{ env.KEYSTORE_BASE64 }}
+          KEY_STORE_PASSWORD: ${{ env.KEY_STORE_PASSWORD }}
+          KEY_ALIAS: ${{ env.KEY_ALIAS }}
+          KEY_PASSWORD: ${{ env.KEY_PASSWORD }}
 
       - name: Upload Debug APK
         uses: actions/upload-artifact@v4
@@ -47,8 +72,8 @@ jobs:
       - name: Upload Release APK
         uses: actions/upload-artifact@v4
         with:
-          name: GIXTool-Release
-          path: app/build/outputs/apk/release/*.apk
+          name: GIXTool-Release-Signed
+          path: app/build/outputs/apk/release/app-release.apk
 
       - name: Create GitHub Release
         if: github.ref == 'refs/heads/main' && github.event_name == 'push'
@@ -58,6 +83,6 @@ jobs:
           name: "GIX Tool 🔥 v${{ github.run_number }}"
           files: |
             app/build/outputs/apk/debug/app-debug.apk
-            app/build/outputs/apk/release/*.apk
+            app/build/outputs/apk/release/app-release.apk
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
